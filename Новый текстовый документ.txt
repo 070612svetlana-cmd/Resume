@@ -1,0 +1,798 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Светлана Семенова — AI-портфолио</title>
+
+  <style>
+    /* =========================
+       ОБЩИЕ НАСТРОЙКИ
+    ========================= */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #0b0b10;
+      color: #f5f5f7;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    section {
+      padding: 90px 0;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 8px 14px;
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 999px;
+      color: #cfcfff;
+      font-size: 14px;
+      margin-bottom: 22px;
+      background: rgba(255,255,255,0.05);
+    }
+
+    h1, h2, h3 {
+      line-height: 1.15;
+    }
+
+    h1 {
+      font-size: clamp(42px, 7vw, 82px);
+      margin-bottom: 28px;
+      letter-spacing: -2px;
+    }
+
+    h2 {
+      font-size: clamp(32px, 5vw, 56px);
+      margin-bottom: 28px;
+      letter-spacing: -1px;
+    }
+
+    h3 {
+      font-size: 24px;
+      margin-bottom: 14px;
+    }
+
+    p {
+      color: #c9c9d1;
+      font-size: 18px;
+      max-width: 820px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, #ffffff, #b8b8ff, #88f7ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(116, 91, 255, 0.35), transparent 35%),
+        radial-gradient(circle at 80% 20%, rgba(0, 213, 255, 0.22), transparent 30%),
+        linear-gradient(180deg, #0b0b10 0%, #11111a 100%);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      right: -150px;
+      bottom: -120px;
+      background: radial-gradient(circle, rgba(142, 124, 255, 0.28), transparent 70%);
+      filter: blur(20px);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-subtitle {
+      font-size: 21px;
+      color: #d7d7e2;
+      margin-bottom: 18px;
+    }
+
+    .hero-description {
+      margin-bottom: 34px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 34px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 15px 24px;
+      border-radius: 14px;
+      font-weight: 700;
+      transition: 0.3s ease;
+      border: 1px solid rgba(255,255,255,0.18);
+    }
+
+    .btn-primary {
+      background: #ffffff;
+      color: #0b0b10;
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.07);
+      color: #ffffff;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.35);
+    }
+
+    /* =========================
+       БЛОКИ И КАРТОЧКИ
+    ========================= */
+
+    .section-dark {
+      background: #0b0b10;
+    }
+
+    .section-soft {
+      background: #11111a;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      margin-top: 42px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.055);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 26px;
+      padding: 28px;
+      transition: 0.3s ease;
+      min-height: 230px;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      background: rgba(255,255,255,0.085);
+      border-color: rgba(180,180,255,0.45);
+    }
+
+    .card-number {
+      font-size: 14px;
+      color: #9b9bff;
+      margin-bottom: 16px;
+    }
+
+    .list {
+      margin-top: 28px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .list-item {
+      padding: 16px 18px;
+      background: rgba(255,255,255,0.055);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 18px;
+      color: #e7e7ef;
+    }
+
+    /* =========================
+       ПРОЕКТЫ
+    ========================= */
+
+    .project-card {
+      min-height: 280px;
+    }
+
+    .project-tag {
+      display: inline-block;
+      margin-bottom: 18px;
+      font-size: 13px;
+      color: #88f7ff;
+    }
+
+    .project-result {
+      margin-top: 18px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      font-size: 15px;
+      color: #ffffff;
+    }
+
+    /* =========================
+       СТЕК
+    ========================= */
+
+    .tools {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 34px;
+    }
+
+    .tool {
+      padding: 12px 16px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.14);
+      color: #efefff;
+      font-size: 15px;
+    }
+
+    /* =========================
+       МАНИФЕСТ
+    ========================= */
+
+    .manifest {
+      background:
+        radial-gradient(circle at 50% 0%, rgba(132, 108, 255, 0.28), transparent 40%),
+        #0b0b10;
+      text-align: center;
+    }
+
+    .manifest h2 {
+      max-width: 920px;
+      margin: 0 auto;
+      font-size: clamp(34px, 6vw, 68px);
+    }
+
+    /* =========================
+       КОНТАКТЫ
+    ========================= */
+
+    .contacts {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 34px;
+    }
+
+    .contact-card {
+      padding: 24px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.14);
+    }
+
+    .contact-card span {
+      display: block;
+      color: #9999b8;
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+
+    footer {
+      padding: 34px 0;
+      background: #07070b;
+      color: #8f8fa3;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    /* =========================
+       АДАПТИВ
+    ========================= */
+
+    @media (max-width: 900px) {
+      .grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .contacts {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      section {
+        padding: 70px 0;
+      }
+
+      .grid,
+      .list {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 80px 0;
+      }
+
+      .buttons {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================
+       ПЕРВЫЙ ЭКРАН
+  ========================== -->
+
+  <header class="hero">
+    <div class="container hero-content">
+      <div class="badge">Prompt-инженер / Portfolio / Web & AI Experiences</div>
+
+      <h1>
+        Я создаю <span class="gradient-text">AI-продукты, сайты и digital-решения</span>, которые выглядят как вайб — а работают как система
+      </h1>
+
+      <p class="hero-subtitle">
+        Светлана Семенова — эксперт по нейросетям и AI-решениям.
+      </p>
+
+      <p class="hero-description">
+        Я формулирую точные запросы для искусственного интеллекта, чтобы получать полезный результат:
+        пишу продающие тексты, письма, составляю контент-планы, изучаю целевую аудиторию,
+        создаю сценарии для Reels / Клипов / Shorts, GPT-агентов, AI-ботов, сайты и лендинги.
+      </p>
+
+      <p>
+        Не просто “что-то сверстать”, а собрать ощущение, стиль, логику и подачу так,
+        чтобы проект хотелось открыть, листать и запомнить.
+      </p>
+
+      <div class="buttons">
+        <a href="#projects" class="btn btn-primary">Посмотреть проекты</a>
+        <a href="#contacts" class="btn btn-secondary">Обсудить задачу</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================
+       ОБО МНЕ
+  ========================== -->
+
+  <section class="section-dark" id="about">
+    <div class="container">
+      <div class="badge">Обо мне</div>
+
+      <h2>Я не просто создаю проекты — я собираю впечатление</h2>
+
+      <p>
+        Я работаю на стыке нейросетей, визуала, маркетинга, UX и AI-инструментов.
+        Для меня сайт, бот, иллюстрация или digital-продукт — это не просто набор элементов.
+        Это ощущение, структура, польза и результат для клиента.
+      </p>
+
+      <div class="list">
+        <div class="list-item">Лендинги и сайты-визитки</div>
+        <div class="list-item">GPT-агенты и AI-боты</div>
+        <div class="list-item">Продающие тексты и письма</div>
+        <div class="list-item">Контент-планы и анализ ЦА</div>
+        <div class="list-item">Нейроиллюстрации и визуалы</div>
+        <div class="list-item">Ретушь и восстановление фото</div>
+        <div class="list-item">Логотипы, паттерны, брендбуки</div>
+        <div class="list-item">Детские раскраски с ИИ</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================
+       ЧТО Я ДЕЛАЮ
+  ========================== -->
+
+  <section class="section-soft" id="services">
+    <div class="container">
+      <div class="badge">Услуги</div>
+
+      <h2>Что я делаю</h2>
+
+      <div class="grid">
+        <div class="card">
+          <div class="card-number">01</div>
+          <h3>GPT-агенты и AI-боты</h3>
+          <p>
+            Создаю помощников для бизнеса, экспертов и личных задач.
+            Они могут анализировать данные, отвечать клиентам, создавать тексты,
+            презентации и медиаконтент.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="card-number">02</div>
+          <h3>Сайты и лендинги</h3>
+          <p>
+            Разрабатываю сайты, которые не просто “есть”, а собирают внимание,
+            держат ритм и ведут человека по смыслу.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="card-number">03</div>
+          <h3>Нейроиллюстрации</h3>
+          <p>
+            Создаю изображения для рекламы, соцсетей, блогов, обложек,
+            баннеров, аватарок, концепт-артов и визуальной упаковки.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="card-number">04</div>
+          <h3>Нейровидео и ролики</h3>
+          <p>
+            Создаю ролики с помощью AI: говорящие персонажи, анимации,
+            рекламные видео, обучающие материалы и контент для соцсетей.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="card-number">05</div>
+          <h3>Детские раскраски</h3>
+          <p>
+            Делаю уникальные раскраски по запросу ребёнка:
+            для творчества, развития моторики, обучения и печати.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="card-number">06</div>
+          <h3>Ретушь старых фото</h3>
+          <p>
+            Восстанавливаю фотографии: убираю царапины, пятна, заломы,
+            повышаю четкость, улучшаю контраст и раскрашиваю чёрно-белые снимки.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="card-number">07</div>
+          <h3>Логотипы и брендбуки</h3>
+          <p>
+            Создаю логотипы, паттерны, иконки, фирменный стиль,
+            брендбуки и иллюстрации в единой визуальной системе.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="card-number">08</div>
+          <h3>Тексты и контент</h3>
+          <p>
+            Пишу продающие тексты, письма, сценарии, контент-планы,
+            прогревы и материалы для соцсетей с помощью AI.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="card-number">09</div>
+          <h3>AI + Web</h3>
+          <p>
+            Использую нейросети как инструмент ускорения и усиления идей,
+            а не как замену мышлению, вкусу и стратегии.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================
+       ПОДХОД
+  ========================== -->
+
+  <section class="section-dark" id="approach">
+    <div class="container">
+      <div class="badge">Подход</div>
+
+      <h2>Как я работаю</h2>
+
+      <div class="grid">
+        <div class="card">
+          <div class="card-number">01</div>
+          <h3>Сначала задача</h3>
+          <p>
+            Я смотрю, что нужно клиенту: продажи, презентация, упаковка,
+            автоматизация, контент или визуальный стиль.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="card-number">02</div>
+          <h3>Потом структура</h3>
+          <p>
+            Красивый проект без логики — это просто обёртка.
+            Поэтому я собираю смысл, сценарий и путь пользователя.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="card-number">03</div>
+          <h3>Потом реализация</h3>
+          <p>
+            Когда есть идея, стиль и логика, проект собирается быстрее,
+            точнее и выглядит как полноценный продукт.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================
+       ПРОЕКТЫ
+  ========================== -->
+
+  <section class="section-soft" id="projects">
+    <div class="container">
+      <div class="badge">Портфолио</div>
+
+      <h2>Избранные проекты</h2>
+
+      <div class="grid">
+        <div class="card project-card">
+          <span class="project-tag">AI / Bots / Automation</span>
+          <h3>GPT-агенты и AI-боты</h3>
+          <p>
+            Готовые AI-помощники для бизнеса, экспертов и личных задач.
+            Помогают анализировать документы, сайты, базы данных,
+            создавать тексты, презентации и медиаконтент.
+          </p>
+          <div class="project-result">
+            Результат: экономия времени, автоматизация процессов,
+            улучшение клиентского сервиса.
+          </div>
+        </div>
+
+        <div class="card project-card">
+          <span class="project-tag">Kids / Creative AI</span>
+          <h3>Детские раскраски с ИИ</h3>
+          <p>
+            Уникальные раскраски, созданные по запросу ребёнка.
+            Можно использовать для творчества, обучения, развития моторики
+            и распечатки.
+          </p>
+          <div class="project-result">
+            Результат: персональный творческий продукт для детей.
+          </div>
+        </div>
+
+        <div class="card project-card">
+          <span class="project-tag">Visual AI / Design</span>
+          <h3>Нейроиллюстрации</h3>
+          <p>
+            Изображения на основе текстового описания:
+            баннеры, обложки, аватары, иллюстрации, концепт-арты,
+            визуалы для соцсетей.
+          </p>
+          <div class="project-result">
+            Результат: уникальный визуальный контент под задачу клиента.
+          </div>
+        </div>
+
+        <div class="card project-card">
+          <span class="project-tag">AI Video / Content</span>
+          <h3>Нейровидео и ролики</h3>
+          <p>
+            Создание роликов с AI: говорящие персонажи, анимации,
+            рекламные видео, обучающие материалы и контент для соцсетей.
+          </p>
+          <div class="project-result">
+            Результат: современный видеоконтент без сложной съёмки.
+          </div>
+        </div>
+
+        <div class="card project-card">
+          <span class="project-tag">Photo Restoration</span>
+          <h3>Ретушь и восстановление фото</h3>
+          <p>
+            Улучшение качества старых фотографий:
+            удаление повреждений, повышение детализации,
+            раскрашивание и восстановление снимков.
+          </p>
+          <div class="project-result">
+            Результат: старые фотографии получают новую жизнь.
+          </div>
+        </div>
+
+        <div class="card project-card">
+          <span class="project-tag">Brand / Identity</span>
+          <h3>Логотипы, паттерны, брендбуки</h3>
+          <p>
+            Создание элементов фирменного стиля:
+            логотипов, паттернов, иконок, брендбуков
+            и иллюстраций в едином стиле.
+          </p>
+          <div class="project-result">
+            Результат: быстрая визуальная упаковка бренда.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================
+       ПОЧЕМУ СО МНОЙ
+  ========================== -->
+
+  <section class="section-dark" id="why">
+    <div class="container">
+      <div class="badge">Почему выбирают меня</div>
+
+      <h2>Почему ко мне идут не просто за услугой</h2>
+
+      <p>
+        Потому что я умею видеть проект целиком.
+        Не только как его собрать, но и как подать, как он будет восприниматься,
+        где человек зацепится взглядом, что запомнит и почему проект будет выглядеть дороже.
+      </p>
+
+      <div class="list">
+        <div class="list-item">Есть реальные направления монетизации</div>
+        <div class="list-item">Услуги понятны клиенту</div>
+        <div class="list-item">Формулировки ориентированы на пользу</div>
+        <div class="list-item">Проекты можно показывать клиентам</div>
+        <div class="list-item">Подходит для сайта, PDF и Telegram</div>
+        <div class="list-item">Экспертная подача вместо шаблонной</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================
+       ИНСТРУМЕНТЫ
+  ========================== -->
+
+  <section class="section-soft" id="tools">
+    <div class="container">
+      <div class="badge">Стек</div>
+
+      <h2>Инструменты</h2>
+
+      <div class="tools">
+        <div class="tool">ChatGPT</div>
+        <div class="tool">Cursor</div>
+        <div class="tool">GPT Agents</div>
+        <div class="tool">HTML</div>
+        <div class="tool">CSS</div>
+        <div class="tool">JavaScript</div>
+        <div class="tool">Figma</div>
+        <div class="tool">Tilda</div>
+        <div class="tool">Webflow</div>
+        <div class="tool">Telegram Bots</div>
+        <div class="tool">Midjourney</div>
+        <div class="tool">Leonardo AI</div>
+        <div class="tool">Kandinsky</div>
+        <div class="tool">GigaChat</div>
+      </div>
+
+      <p style="margin-top: 32px;">
+        Но если честно — главный инструмент не стек, а вкус, насмотренность,
+        понимание задачи и умение собирать цельное впечатление.
+      </p>
+    </div>
+  </section>
+
+  <!-- =========================
+       ДЛЯ КОГО
+  ========================== -->
+
+  <section class="section-dark">
+    <div class="container">
+      <div class="badge">Для кого</div>
+
+      <h2>Кому подойдёт моя работа</h2>
+
+      <div class="list">
+        <div class="list-item">Экспертам</div>
+        <div class="list-item">Предпринимателям</div>
+        <div class="list-item">Креаторам</div>
+        <div class="list-item">Digital-проектам</div>
+        <div class="list-item">AI-продуктам</div>
+        <div class="list-item">Студиям</div>
+        <div class="list-item">Тем, кому нужен сайт с характером</div>
+        <div class="list-item">Тем, кто не хочет безликую страницу</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================
+       МАНИФЕСТ
+  ========================== -->
+
+  <section class="manifest">
+    <div class="container">
+      <h2>
+        Хороший сайт — это не когда “нормально сверстано”.
+        Это когда у проекта появляется энергия, форма и ощущение, что он живой.
+      </h2>
+    </div>
+  </section>
+
+  <!-- =========================
+       ФИНАЛЬНЫЙ CTA
+  ========================== -->
+
+  <section class="section-soft">
+    <div class="container">
+      <div class="badge">Давайте работать</div>
+
+      <h2>Если вам нужен сайт, AI-продукт или визуальная упаковка, которая выглядит современно — давайте соберём</h2>
+
+      <p>
+        Я могу помочь с концепцией, структурой, текстами, упаковкой,
+        визуальной подачей и реализацией. От первой идеи до готового продукта.
+      </p>
+
+      <div class="buttons">
+        <a href="https://t.me/Elis753" class="btn btn-primary" target="_blank">Написать мне</a>
+        <a href="#projects" class="btn btn-secondary">Посмотреть работы</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================
+       КОНТАКТЫ
+  ========================== -->
+
+  <section class="section-dark" id="contacts">
+    <div class="container">
+      <div class="badge">Контакты</div>
+
+      <h2>Связаться со мной</h2>
+
+      <div class="contacts">
+        <a class="contact-card" href="https://t.me/Elis753" target="_blank">
+          <span>Telegram</span>
+          @elis753
+        </a>
+
+        <a class="contact-card" href="mailto:elis753@mail.ru">
+          <span>Email</span>
+          elis753@mail.ru
+        </a>
+
+        <a class="contact-card" href="https://vk.com/id426034832" target="_blank">
+          <span>ВКонтакте</span>
+          vk.com/id426034832
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 Светлана Семенова. AI-портфолио / Prompt-инженер / Web & AI Experiences
+  </footer>
+
+</body>
+</html>
